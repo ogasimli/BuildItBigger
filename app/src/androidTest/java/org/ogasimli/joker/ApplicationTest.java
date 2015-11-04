@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package org.ogasimli.joker;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
