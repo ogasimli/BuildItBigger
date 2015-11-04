@@ -6,19 +6,23 @@ import com.google.android.gms.ads.AdView;
 import com.udacity.ogasimli.joker.R;
 
 import org.ogasimli.joker.jokelib.Joke;
+import org.ogasimli.joker.jokeview.JokeActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(LOG_TAG, "Main activity was called");
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -33,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
     public void tellJoke(View view){
         Joke joke = new Joke();
         String jokeLine = joke.tellJoke();
-        Toast.makeText(this, jokeLine, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, jokeLine);
+        startActivity(intent);
     }
 
 /*    @Override
