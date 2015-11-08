@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
-public class ExtendedMainActivity extends MainActivity {
+public final class ExtendedMainActivity extends MainActivity {
 
     InterstitialAd mInterstitialAd;
 
@@ -57,7 +57,9 @@ public class ExtendedMainActivity extends MainActivity {
                 .build();
         if (adView != null) {
             adView.loadAd(adRequest);
-        } else {
+        }
+
+        if (interstitialAd != null) {
             interstitialAd.loadAd(adRequest);
         }
     }

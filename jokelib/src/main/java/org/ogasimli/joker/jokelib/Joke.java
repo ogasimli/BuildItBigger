@@ -17,8 +17,8 @@ public class Joke {
 
     private final String[] mJokes = {
                 "A husband and wife are trying to set up a new password for their computer. " +
-                        "The husband puts, \"Mypenis,\" and the wife falls on the ground laughing" +
-                        "because on the screen it says, \"Error. Not long enough.\"",
+                        "The husband puts, \"Mypenis,\" and the wife falls on the ground " +
+                        "laughing because on the screen it says, \"Error. Not long enough.\"",
 
                 "The teacher asked Jimmy, \"Why is your cat at school today Jimmy?\" Jimmy " +
                         "replied crying, \"Because I heard my daddy tell my mommy, 'I am going " +

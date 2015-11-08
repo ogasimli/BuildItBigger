@@ -2,4 +2,6 @@
     <string name="app_name">Joker</string>
     <string name="instructions">Press the button for a delicious joke!</string>
     <string name="button_text">Tell Joke</string>
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="progress_dialog_content">Loading</string>
 </resources>
