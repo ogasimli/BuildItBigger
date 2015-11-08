@@ -13,7 +13,7 @@ import android.view.View;
 
 public final class ExtendedMainActivity extends MainActivity {
 
-    InterstitialAd mInterstitialAd;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

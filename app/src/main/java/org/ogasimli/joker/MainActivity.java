@@ -8,9 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -20,14 +18,11 @@ public abstract class MainActivity extends AppCompatActivity implements JokeAsyn
 
     private JokeAsyncTask mAsyncTask;
     private ProgressDialog mProgressDialog;
-    private ProgressBar mProgressBar;
     private Toast mToast;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
     }
 
     public void tellJoke(View view){
@@ -35,7 +30,6 @@ public abstract class MainActivity extends AppCompatActivity implements JokeAsyn
     }
 
     protected final void loadJoke(){
-        //mProgressBar.setVisibility(View.VISIBLE);
         showProgressDialog(true);
         if (mAsyncTask != null) {
             mAsyncTask.cancel(true);
@@ -47,7 +41,6 @@ public abstract class MainActivity extends AppCompatActivity implements JokeAsyn
 
     @Override
     public void onJokeSuccess(String joke) {
-        //mProgressBar.setVisibility(View.GONE);
         showProgressDialog(false);
         Intent intent = new Intent(this, JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
@@ -56,9 +49,7 @@ public abstract class MainActivity extends AppCompatActivity implements JokeAsyn
 
     @Override
     public void onJokeError(IOException e) {
-        //mProgressBar.setVisibility(View.GONE);
         showProgressDialog(false);
-        Log.d("MainActivity", "ProgressBar is " + mProgressBar.getVisibility());
         showToast(e.getMessage());
     }
 

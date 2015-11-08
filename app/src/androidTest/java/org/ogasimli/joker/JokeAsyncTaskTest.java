@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class JokeAsyncTaskTest extends AndroidTestCase {
 
-    private CountDownLatch mCountDownLatch = new CountDownLatch(1);
+    private final CountDownLatch mCountDownLatch = new CountDownLatch(1);
     private String mJoke;
 
     public void jokeTest() {

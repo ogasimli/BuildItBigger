@@ -1,4 +1,4 @@
-<FrameLayout
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment"
@@ -9,4 +9,4 @@
 
     <include layout="@layout/content_main"/>
 
-</FrameLayout>
+</merge>

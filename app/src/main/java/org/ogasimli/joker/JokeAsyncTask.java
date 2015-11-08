@@ -17,9 +17,9 @@ import java.lang.ref.WeakReference;
 /**
  * AsyncTask class to retrieve jokes form GCE
  */
-public class JokeAsyncTask extends AsyncTask<Void, Void, Pair<IOException, String>> {
+class JokeAsyncTask extends AsyncTask<Void, Void, Pair<IOException, String>> {
 
-    private static String TAG = JokeAsyncTask.class.getSimpleName();
+    private static final String TAG = JokeAsyncTask.class.getSimpleName();
 
     private static MyApi myApiService = null;
     private WeakReference<Callback> mCallback;
