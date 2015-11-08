@@ -5,7 +5,6 @@ import com.google.android.gms.ads.AdView;
 
 import com.udacity.ogasimli.joker.R;
 
-import org.ogasimli.joker.jokelib.Joke;
 import org.ogasimli.joker.jokeview.JokeActivity;
 
 import android.content.Intent;
@@ -13,11 +12,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JokeAsyncTask.Callback {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private JokeAsyncTask mAsyncTask;
+    private Toast mToast;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,33 +39,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view){
-        Joke joke = new Joke();
-        String jokeLine = joke.tellJoke();
+        if (mAsyncTask != null) {
+            mAsyncTask.cancel(true);
+        }
 
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_KEY, jokeLine);
-        startActivity(intent);
-    }
-
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        mAsyncTask = new JokeAsyncTask(this);
+        mAsyncTask.execute();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onJokeSuccess(String joke) {
+        Intent intent = new Intent(this, JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, joke);
+        startActivity(intent);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    @Override
+    public void onJokeError(IOException e) {
+        showToast(e.getMessage());
+    }
+
+    private void showToast(String message) {
+        if (mToast != null) {
+            mToast.cancel();
         }
-
-        return super.onOptionsItemSelected(item);
-    }*/
+        mToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        mToast.show();
+    }
 }

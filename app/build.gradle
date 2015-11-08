@@ -24,8 +24,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     // Added for AdMob
-    compile 'com.google.android.gms:play-services:8.1.0'
-    //Java library containing jokes
-    compile project(':jokelib')
+    compile 'com.google.android.gms:play-services-ads:8.1.0'
+    //Android library to view jokes
     compile project(':jokeview')
+    //GCE backend module
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
