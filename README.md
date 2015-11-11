@@ -30,7 +30,6 @@ During this project, I:
 ## Screenshots
 
 ![screen](screenshots/main_phone.png)
-
 ![screen](screenshots/detail_phone.png)
 
 ## Android Developer Nanodegree
