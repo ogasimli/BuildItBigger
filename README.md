@@ -25,7 +25,7 @@ During this project, I:
 * Configured a multi project build to compile my libraries and app
 * Used the Gradle App Engine plugin to deploy a backend
 * Configured an integration test suite that runs against the local App Engine development server
-* Add Interstitial Ad
+* Added interstitial ad to free flavor
 
 ## Screenshots
 
